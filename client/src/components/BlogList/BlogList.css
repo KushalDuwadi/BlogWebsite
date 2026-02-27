@@ -1,0 +1,49 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.blogFilter {
+  display: flex;        /* make it a flex container */
+  flex-wrap: wrap;      /* allow cards to wrap to next row */
+  justify-content: center; /* center cards horizontally */
+  gap: 20px;            /* space between cards */
+}
+
+
+.btn {
+  position: relative;
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  color: black; /* default text color */
+  transition: color 0.3s; /* smooth transition */
+}
+
+.btn.active .btn-text {
+  color: white; /* text color when active */
+}
+
+.active-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #6a68d4;
+  border-radius: 12px;
+  z-index: 0;
+}  
+
+.btn-text {
+  position: relative;
+  z-index: 1;
+}

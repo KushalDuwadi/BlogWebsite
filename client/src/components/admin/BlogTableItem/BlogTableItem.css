@@ -1,0 +1,72 @@
+/* ===== Table Row Hover ===== */
+tr:hover {
+  background: #f9faff;
+}
+
+/* ===== Status Colors ===== */
+.text-green {
+  color: #1f9d55;
+  font-weight: 600;
+}
+
+.text-orange {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+/* ===== Publish Button ===== */
+.publish-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+/* Published state */
+.publish-btn.published {
+  background: #fff4e5;
+  color: #ff9800;
+}
+
+.publish-btn.published:hover {
+  background: #ffe0b2;
+}
+
+/* Unpublished state */
+.publish-btn.unpublished {
+  background: #e6f7ee;
+  color: #1f9d55;
+}
+
+.publish-btn.unpublished:hover {
+  background: #c8f2da;
+}
+
+/* ===== Delete Icon ===== */
+.delete-icon {
+  width: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.delete-icon:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 4px rgba(220, 53, 69, 0.5));
+}
+
+/* ===== Action Cell Alignment ===== */
+td:last-child {
+  display: flex;
+  align-items: center;
+}
+
+/* ===== Table Text ===== */
+td, th {
+  font-size: 14px;
+  color: #444;
+  padding: 12px 16px;
+}

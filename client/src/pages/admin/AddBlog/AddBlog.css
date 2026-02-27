@@ -1,0 +1,150 @@
+/* FORM CONTAINER */
+.add-blog-form {
+  width: 100%;
+  max-width: 700px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left-aligned */
+  gap: 20px;
+  height: fit-content;
+}
+
+/* FORM GROUP */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* width: 100%; */
+}
+
+
+
+/* IMAGE UPLOAD */
+.image-upload-box {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* border: 2px dashed #ccc; */
+  border-radius: 10px;
+  /* padding: 10px; */
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+
+.preview-image {
+  width: 30%;
+  max-width: 300px;
+  height: fit-content;
+
+}
+
+/* TEXT INPUT */
+.text-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #141414;
+}
+
+
+
+/* EDITOR */
+.editor-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ql-toolbar {
+  border-radius: 8px 8px 0 0;
+}
+
+.ql-container {
+  min-height: 300px;
+  /* border-radius: 0 0 8px 8px; */
+  font-size: 15px;
+  width: 100%;
+}
+
+.ql-editor {
+  min-height: 250px;
+  padding: 15px;
+}
+
+/* AI BUTTON */
+.ai-btn {
+  padding: 10px 16px;
+  border: none;
+  background: #43424d;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-start; /* left-aligned */
+}
+
+.ai-btn:hover {
+  background: #4338ca;
+}
+
+/* PUBLISH SECTION */
+.publish-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.publish-section select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+.publish-section select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.submit-btn {
+  padding: 14px 25px;
+  border: none;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  align-self: flex-start; /* left-aligned */
+}
+
+.submit-btn:hover {
+  background: #059669;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .publish-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .publish-section select,
+  .submit-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,136 @@
+/* ===== Container ===== */
+.list-blog {
+  background: #f9faff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Title */
+.list-blog h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Table Container */
+.list-blogs-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+/* Table Styling */
+.list-blogs-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Table Head */
+.list-blogs-container th {
+  background: #f1f3f9;
+  color: #555;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+}
+
+/* Table Body */
+.list-blogs-container td {
+  padding: 12px 16px;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+/* Row Hover */
+.list-blogs-container tr:hover {
+  background: #eef2ff;
+}
+
+/* Status Badge */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status.published {
+  background: #e6f7ee;
+  color: #1f9d55;
+}
+
+.status.draft {
+  background: #fff4e5;
+  color: #ff9800;
+}
+
+/* Action Column (Example: buttons) */
+.action-btn {
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: 0.2s;
+}
+
+.action-btn.edit {
+  background: #667eea;
+  color: white;
+}
+
+.action-btn.edit:hover {
+  background: #556cd6;
+}
+
+.action-btn.delete {
+  background: #ff4d4f;
+  color: white;
+}
+
+.action-btn.delete:hover {
+  background: #e63636;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .list-blogs-container table,
+  .list-blogs-container thead,
+  .list-blogs-container tbody,
+  .list-blogs-container th,
+  .list-blogs-container td,
+  .list-blogs-container tr {
+    display: block;
+  }
+
+  .list-blogs-container thead tr {
+    display: none;
+  }
+
+  .list-blogs-container td {
+    padding: 12px 10px;
+    text-align: right;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
+
+  .list-blogs-container td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 50%;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+  }
+}

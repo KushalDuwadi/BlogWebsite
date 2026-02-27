@@ -1,0 +1,139 @@
+.blogContent {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: #161111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blogContent .blogDate {
+  font-size: 15px;
+  color: #3a87bb;
+  margin-bottom: 10px; 
+}
+
+.blogTitle {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 15px 0;
+  color: #111;
+}
+
+.blogSub {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0 20px 0;
+  color: #444;
+}
+
+.blogContent .blogAuthor {
+  font-size: 14px;
+  font-weight: 500;
+  color: #38539e;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px 10px;
+  height: 20px;
+  max-width: 200px;
+  /* font-style: italic; */
+}
+
+.blogImage {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.blogContent p {
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: #333;
+}
+.blogContent h1{
+    font-size: 30px;
+    max-width: 800px;
+    align-items: center;
+}
+
+.blogContent h2,
+.blogContent h3,
+.blogContent h4 {
+  margin: 20px 0 10px 0;
+  /* color: #857878; */
+  font-weight: 400;
+}
+
+
+/* Comments Section */
+.comments {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.comments > p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease;
+}
+
+.comment-item:hover {
+  transform: translateY(-2px);
+}
+
+.comment-item > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.comment-item p {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.comment-item .comment-date {
+  font-size: 13px;
+  color: #777;
+  margin-top: 5px;
+  text-align: right;
+}

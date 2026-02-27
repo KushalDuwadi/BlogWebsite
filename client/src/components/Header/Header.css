@@ -1,0 +1,69 @@
+.header{
+    margin: 50px;
+    position: relative;
+}
+.item{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom:10px;
+
+}
+
+.header-item{
+    display: inline-flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 1px 20px;
+    margin-bottom: 10px;
+    border: 2px solid rgb(95, 148, 218);
+    border-radius: 50px;
+    font-size:small;
+}
+.title{
+    font-size:50px;
+}
+.description{
+    margin: 6px 0 ;
+    font-size: large;
+    color: grey;
+   max-width: 800px;
+    margin: 6px auto;
+
+}
+.text{
+    color: rgb(52, 52, 233);
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 500px;
+height: 50px;
+  border: 2px solid #d3deec;
+  border-radius: 10px;
+  overflow: hidden; /* keeps button inside border */
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: transparent;
+}
+
+form button {
+  background-color:#4f4ddf;
+  margin: 5px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+form button:hover {
+  transform: scale(1.1);
+}

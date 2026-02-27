@@ -1,0 +1,38 @@
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+
+  color: white;
+}
+
+.layout-header .logo {
+  height: 40px;
+  cursor: pointer;
+}
+
+.logout {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.logout:hover {
+  background: #d62828;
+}
+
+.layout-body {
+  display: flex;
+  min-height: calc(100vh - 60px); /* header height */
+}
+
+
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  /* background: #f9f9f9; */
+}
