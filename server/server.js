@@ -3,6 +3,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import connectDB from './configs/db.js';
 import adminRouter from './routes/adminroutes.js';
+import blogRouter from './routes/blogRoutes.js';
 
 
 
@@ -29,6 +30,7 @@ app.get("/",(req, res)=>{
 })
 
 app.use('/api/admin',adminRouter)
+app.use('/api/blog',blogRouter)
 
  // Start the server
 
