@@ -4,9 +4,22 @@ import './BlogList.css';
 // import {BlockCard} from '../BlogCard.jsx';
 import { blog_data, blogCategories } from '../../assets/assets';
 import BlockCard from '../BlogCard/BlockCard'
+import { useAppContext } from '../../context/AppContext';
 
  const BlogList = () => {
   const [menu, setMenu] = useState("All");
+  const {blogs,input} = useAppContext();
+
+
+  const filteredBlogs = ()=>{
+    if(input === ''){
+      return blogs;
+    }
+   return blogs.filter(blog =>
+    blog.title.toLowerCase().includes(input.toLowerCase()) ||
+    blog.category.toLowerCase().includes(input.toLowerCase())
+  );
+  }
 
   return (
     <div className='container'>
@@ -19,7 +32,7 @@ import BlockCard from '../BlogCard/BlockCard'
   >
     {menu === item && (
       <div
-        layoutId="activeBackground"
+        // layoutid="activeBackground"
         className="active-background"
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
       />
@@ -30,7 +43,7 @@ import BlockCard from '../BlogCard/BlockCard'
 
       </div>
       <div>
-        {blog_data.filter((blog)=>menu==='All'? true: blog.category===menu).map((blog) => (
+        {filteredBlogs().filter((blog)=>menu==='All'? true: blog.category===menu).map((blog) => (
           <BlockCard key={blog._id} blog={blog} />
         ))}
       </div>

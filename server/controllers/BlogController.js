@@ -1,6 +1,7 @@
 import fs from "fs";
 import Blog from "../models/Blog.js";
 import imagekit from "../configs/imagekit.js";
+import Comment from "../models/Comment.js";
 
 export const addBlog = async (req, res) => {
   try {
@@ -67,36 +68,55 @@ export const getAllBlogs = async(req,res)=>{
 
 //get blog details by id
 
-export const getBlogById= async(req,res)=>{
-  try{
-    const {id} = req.params;
-    const blog  =await Blog.findById(id);
-    if(!blog){
-      return res.json({success:false,message:"Blog not found"})
+// export const getBlogById= async(req,res)=>{
+//   try{
+//     const {id} = req.params;
+//     const blog  =await Blog.findById(id);
+//     if(!blog){
+//       return res.json({success:false,message:"Blog not found"})
+//     }
+//     res.json({success:true,blog})
+//   }
+//   catch(error){
+//         res.json({success:false,message:"Error fetching blog details",error:error.message})
+//   }
+// }
+export const getBlogById = async (req, res) => {
+  try {
+    //  const {BlogId} = req.params;
+//     const blog  =await Blog.findById(BlogId); // BlogId can be wriiten but it should also matches in routes
+// blogRouter.get('/:BlogId',getBlogById)<-- this routes is not of here it is of blogRoutes 
+    const { id } = req.params; // <- must match route
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return res.status(404).json({ success: false, message: "Blog not found" });
     }
-    res.json({success:true,blog})
+    res.json({ success: true, blog });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Error fetching blog details", error: error.message });
   }
-  catch(error){
-        res.json({success:false,message:"Error fetching blog details",error:error.message})
-  }
-}
+};
 
 //delete blog by id
 
-export const deleteBlogById= async(req,res)=>{
-  try{
-    const {id} = req.body;
-    await Blog.findByIdAndDelete(id);
+export const deleteBlogById = async (req, res) => {
+  try {
+    const { id } = req.body;
 
- 
-    await Comment.deleteMany({blog:id})   //delete all comments associated with that blogs
+    const blog = await Blog.findByIdAndDelete(id);
 
-    res.json({success:true, message:"Blog deleted successfully"})
+    if (!blog) {
+      return res.json({ success: false, message: "Blog not found" });
+    }
+
+    // Delete all comments associated with this blog
+    await Comment.deleteMany({ blog: id });
+
+    return res.json({ success: true, message: "Blog deleted successfully" });
+  } catch (error) {
+    return res.json({ success: false, message: "Error deleting blog", error: error.message });
   }
-  catch(error){
-        res.json({success:false,message:"Error deleting blog ",error:error.message})
-  }
-}
+};
 
 //toggle blog publish ststus
 

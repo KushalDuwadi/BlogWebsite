@@ -7,7 +7,7 @@ const blogRouter = express.Router();
 
 blogRouter.post('/add', upload.single('image'), auth, addBlog);
 blogRouter.get('/all',getAllBlogs);
-blogRouter.get('/:blogId',getBlogById)
+blogRouter.get('/:id',getBlogById)
 blogRouter.post('/delete',auth,deleteBlogById) // auth middleware added to protect the delete route so that only admin can delete it
 blogRouter.post('/toggle-publish',auth,togglePublish) // auth middleware added to protect the toggle publish route so that only admin can toggle it
 blogRouter.post('/add-comment',addComment)

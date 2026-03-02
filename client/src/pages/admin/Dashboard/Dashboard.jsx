@@ -2,23 +2,34 @@ import React, { useEffect, useState } from "react";
 import { assets, dashboard_data } from "../../../assets/assets";
 import BlogTableItem from "../../../components/admin/BlogTableItem/BlogTableItem";
 import "./Dashboard.css";
+import { useAppContext } from "../../../context/AppContext";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
-
+  
+  
+  
   const [dashboardData, setDashboardData] = useState({
     blogs: 0,
     comments: 0,
     drafts: 0,
     recentBlogs: []
   });
+  const{axios} = useAppContext();
 
-  const fetchDashboardData = async () => {
-    // later replace with API call
-    setDashboardData(dashboard_data);
-  };
+ const fetchDashboard = async () => {
+  try {
+    // setLoading(true);
+    const { data } = await axios.get("/api/admin/dashboard");
+    if (data.success) setDashboardData(data.dashboardData);
+    else toast.error(data.message);
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   useEffect(() => {
-    fetchDashboardData();
+    fetchDashboard();
   }, []);
 
   return (
@@ -38,7 +49,7 @@ const Dashboard = () => {
         <div className="card">
           <img src={assets.dashboard_icon_2} alt="comments icon" />
           <div>
-            <p>{dashboardData.comments}</p>
+            <p>{dashboard_data.comments}</p>
             <span>Comments</span>
           </div>
         </div>
@@ -78,7 +89,7 @@ const Dashboard = () => {
                 <BlogTableItem
                   key={blog._id}
                   blog={blog}
-                  fetchBlogs={fetchDashboardData}
+                  fetchBlogs={fetchDashboard}
                   index={index + 1}
                 />
               ))

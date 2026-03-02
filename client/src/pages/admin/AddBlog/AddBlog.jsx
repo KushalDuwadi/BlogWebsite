@@ -3,8 +3,13 @@ import { assets, blogCategories } from '../../../assets/assets';
 import './AddBlog.css';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
+import { useAppContext } from '../../../context/AppContext';
+import toast from 'react-hot-toast';
 
 const AddBlog = () => {
+
+  const {axios} = useAppContext();
+  const[isAdding,setIsAdding] = useState(false)
 
   const editorRef = useRef(null);
   const quillRef = useRef(null);
@@ -19,19 +24,57 @@ const AddBlog = () => {
     alert("AI content generation coming soon 🙂");
   }
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const onSubmitHandler = async (e) => {
+  e.preventDefault();
 
-    const content = quillRef.current.root.innerHTML;
+  try {
+    setIsAdding(true);
 
-    console.log({
+    const blog = {
       title,
       subTitle,
+      //  description: quillRef.current.root.innerHTML, //->It assumes quillRef.current is already initialized. If your user clicks submit before Quill is ready, quillRef.current is null, and your app will crash or the description will be empty.
+      description: quillRef.current ? quillRef.current.root.innerHTML : "",//->This ensures description is at least "" if Quill isn’t ready.
+     //-->//Once Quill is initialized, it will correctly store the content.
       category,
       isPublished,
-      content
-    });
+    };
+
+    const formData = new FormData();
+    formData.append("blog", JSON.stringify(blog));
+    formData.append("image", image);
+
+    const { data } = await axios.post("/api/blog/add",formData,
+      // { headers: { "Content-Type": "multipart/form-data" } }
+    );
+
+    if (data.success) {
+      toast.success(data.message);
+      setImage(false);
+      setTitle("");
+      setSubTitle("");
+      quillRef.current.root.innerHTML = "";
+      setCategory("Startup");
+    } else {
+      toast.error(data.message);
+    }
+  } catch (error) {
+    toast.error(error.message);
+  } finally {
+    setIsAdding(false);
   }
+};
+
+// const content = quillRef.current ? quillRef.current.root.innerHTML : "";
+
+    // console.log({
+    //   title,
+    //   subTitle,
+    //   category,
+    //   isPublished,
+    //   content
+    // });
+  
 
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
@@ -54,10 +97,11 @@ const AddBlog = () => {
             alt="image"
           />
           <input
+          id = "image"
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
             hidden
-            required
+            
           />
         </label>
 
@@ -115,11 +159,12 @@ const AddBlog = () => {
           <label htmlFor="publish">Publish Now</label>
         </div>
 
-        <button className="submit-btn" type="submit">Add Blog</button>
+        <button disabled= {isAdding} className="submit-btn" type="submit">{isAdding? 'Adding...': 'Add Blog'}</button>
       </div>
 
     </form>
   )
+
 }
 
 export default AddBlog;
